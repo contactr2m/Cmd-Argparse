@@ -2,6 +2,25 @@
 from argparse import ArgumentParser
 
 
+class ExitArgparse(Exception):
+    """Exit method from ArgumentParser."""
+
+    def __init__(self, message=None, status=0):
+        super(ExitArgparse, self).__init__()
+        self.message = message
+        self.status = status
+
+
+class CommandError(Exception):
+    """
+    Exception class indicating a problem while executing a command. If this exception is raised during the execution
+    of a  command, it will be caught and turned into a nicely-printed error message to the appropriate output stream
+    (i.e., stderr); as a result, raising this exception (with a sensible description of the error) is the preferred
+    way to indicate that something has gone wrong in the execution of a command.
+    """
+    pass
+
+
 # Non exiting argument parser.
 
 

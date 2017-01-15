@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from command_parser import CommandParser
+from command_parser import CommandParser, CommandError
 
 
 class OutputWrapper(object):
@@ -24,16 +24,6 @@ class OutputWrapper(object):
         if ending and not msg.endswith(ending):
             msg += ending
         self._out.write(str(msg))
-
-
-class CommandError(Exception):
-    """
-    Exception class indicating a problem while executing a command. If this exception is raised during the execution
-    of a  command, it will be caught and turned into a nicely-printed error message to the appropriate output stream
-    (i.e., stderr); as a result, raising this exception (with a sensible description of the error) is the preferred
-    way to indicate that something has gone wrong in the execution of a command.
-    """
-    pass
 
 
 class SystemCheckError(CommandError):
